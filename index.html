@@ -1,74 +1,95 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Actions / Modules</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task & Action Manager</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>📌 Dashboard Projet</h1>
+
+<header>
+  <h1>Task & Action Manager</h1>
+  <div class="llm-selector">
+    <label for="llmSelect">Choisir LLM :</label>
     <select id="llmSelect">
       <option value="https://chat.openai.com/">ChatGPT</option>
       <option value="https://www.perplexity.ai/">Perplexity</option>
-      <option value="https://www.anthropic.com/">Claude</option>
+      <option value="https://www.anthropic.com/claude">Claude</option>
+      <option value="https://deepseek.com/">Deepseek</option>
+      <option value="https://mistral.ai/">Mistral</option>
     </select>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <!-- Section Tâches -->
-    <section id="tasksSection">
-      <h2>Tâches & Commentaires</h2>
-      <div class="task-input">
-        <input type="text" id="taskInput" placeholder="Ajouter une tâche…">
-        <button id="addBtn">Ajouter</button>
-      </div>
-      <ul id="tasksContainer"></ul>
-      <div class="buttons-row">
-        <button id="clearBtn">🧹 Tout nettoyer</button>
-        <button id="restoreBtn">📂 Uploader une archive</button>
-        <input type="file" id="restoreInput" accept=".json" style="display:none;">
-        <button id="archiveBtn">📥 Archiver JSON</button>
-        <button id="generateJSONBtn">🚀 Générer JSON & Push LLM</button>
-      </div>
-      <textarea id="jsonPaste" placeholder="Coller ici le JSON généré par le LLM…"></textarea>
-      <button id="pushJSONBtn">📤 Push JSON vers Modules</button>
-    </section>
+<main>
+  <section id="inputSection">
+    <h2>Ajouter une tâche</h2>
+    <div class="task-input-row">
+      <input type="text" id="taskInput" placeholder="Nouvelle tâche…">
+      <button id="addBtn">➕ Ajouter</button>
+    </div>
 
-    <!-- Section Modules (basculée en dessous) -->
-    <section id="modulesSection">
-      <h2>Modules / Actions</h2>
+    <ul id="tasksContainer"></ul>
 
-      <div id="jalonsModule">
+    <div class="buttons-row">
+      <button id="clearBtn">🧹 Tout nettoyer</button>
+      <button id="archiveBtn">📂 Archiver JSON</button>
+      <button id="restoreBtn">📤 Uploader une archive</button>
+      <input type="file" id="restoreInput" accept=".json" style="display:none">
+    </div>
+
+    <div class="json-paste-section">
+      <h3>Coller JSON depuis un LLM</h3>
+      <textarea id="jsonPaste" placeholder="Coller ici le JSON traité par le LLM…"></textarea>
+      <button id="pushJsonBtn">📩 Push JSON vers Modules</button>
+    </div>
+
+    <div class="prompts-section">
+      <h3>Prompts</h3>
+      <div id="promptsContainer"></div>
+      <div id="copiedMsg" class="copied-msg">✅ Copié dans le presse-papier !</div>
+    </div>
+  </section>
+
+  <section id="modulesSection">
+    <h2>Modules / Actions</h2>
+    <div id="modulesContainer">
+      <div class="module" id="jalonsModule">
         <h3>Jalons & Sous-actions</h3>
         <ul id="jalonsList"></ul>
       </div>
-
-      <div id="messagesModule">
+      <div class="module" id="messagesModule">
         <h3>Mails / Messages</h3>
-        <select id="messagesPromptSelect">
-          <option value="1">Email professionnel</option>
-          <option value="2">Email amical</option>
-        </select>
-        <ul id="messagesList"></ul>
-        <button id="sendMessagesBtn">Envoyer au LLM</button>
+        <table id="messagesTable">
+          <thead><tr><th>✔</th><th>Destinataire</th><th>Sujet</th><th>Texte</th><th>Note</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="module-prompt">
+          <select id="mailPromptSelect">
+            <option value="1">Email pro</option>
+            <option value="2">Email amical</option>
+          </select>
+          <button id="generateMailBtn">Envoyer au LLM</button>
+        </div>
       </div>
 
-      <div id="livrablesModule">
-        <h3>Livrables (docx, pptx, xlsx/csv)</h3>
-        <select id="livrablesPromptSelect">
-          <option value="1">Plan détaillé</option>
-          <option value="2">Résumé exécutif</option>
-          <option value="3">Checklist rapide</option>
-        </select>
+      <div class="module" id="livrablesModule">
+        <h3>Livrables</h3>
         <ul id="livrablesList"></ul>
-        <button id="sendLivrablesBtn">Envoyer au LLM</button>
+        <div class="module-prompt">
+          <select id="livrablePromptSelect">
+            <option value="1">Plan détaillé</option>
+            <option value="2">Résumé exécutif</option>
+            <option value="3">Checklist rapide</option>
+          </select>
+          <button id="generateLivrableBtn">Envoyer au LLM</button>
+        </div>
       </div>
+    </div>
+  </section>
+</main>
 
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
