@@ -1,65 +1,24 @@
-body {
-  font-family: "Inter", sans-serif;
-  margin:0;
-  padding:0;
-  background:#f5f6fa;
-  color:#2f3640;
-}
-
-header {
-  background:#4cd137;
-  padding:1rem;
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-  color:white;
-}
-
+body { font-family: "Inter", sans-serif; margin:0; padding:0; background:#f5f6fa; color:#2f3640; }
+header { background:#4cd137; padding:1rem; display:flex; justify-content: space-between; align-items:center; color:white; }
 header h1 { margin:0; font-size:1.5rem; }
-header select {
-  padding:0.5rem;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-}
+header select { padding:0.5rem; border:none; border-radius:8px; font-weight:bold; }
 
-main {
-  display:flex;
-  gap:2rem;
-  padding:2rem;
-}
-
-section {
-  background:white;
-  padding:1rem 2rem;
-  border-radius:12px;
-  flex:1;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
-}
+main { display:flex; flex-direction:column; gap:2rem; padding:2rem; }
+section { background:white; padding:1rem 2rem; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
 
 h2,h3 { margin-top:0; }
-
 .task-input { display:flex; gap:1rem; margin-bottom:1rem; }
 .task-input input { flex:1; padding:0.5rem; border-radius:8px; border:1px solid #ccc; }
 .task-input button { padding:0.5rem 1rem; border:none; background:#4cd137; color:white; border-radius:8px; cursor:pointer; }
 
-.buttons-row { display:flex; gap:1rem; margin-top:1rem; }
+.buttons-row { display:flex; gap:1rem; margin-top:1rem; flex-wrap:wrap; }
 .buttons-row button { padding:0.5rem 1rem; border:none; border-radius:8px; cursor:pointer; background:#00a8ff; color:white; }
 
 #tasksContainer li, #jalonsList li, #messagesList li, #livrablesList li {
-  padding:0.5rem;
-  border-bottom:1px solid #eee;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  padding:0.5rem; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center;
 }
 
-.comment-section {
-  display:flex;
-  flex-direction:column;
-  margin-top:0.5rem;
-}
-
+.comment-section { display:flex; flex-direction:column; margin-top:0.5rem; }
 .comment-input { display:flex; gap:0.5rem; margin-top:0.5rem; }
 .comment-input input { flex:1; padding:0.3rem; border-radius:6px; border:1px solid #ccc; }
 .comment-input button { padding:0.3rem 0.6rem; border:none; background:#e84118; color:white; border-radius:6px; cursor:pointer; }
