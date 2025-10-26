@@ -27,14 +27,16 @@
       <ul id="tasksContainer"></ul>
       <div class="buttons-row">
         <button id="clearBtn">🧹 Tout nettoyer</button>
-        <button id="archiveBtn">📂 Archiver JSON</button>
+        <button id="restoreBtn">📂 Uploader une archive</button>
+        <input type="file" id="restoreInput" accept=".json" style="display:none;">
+        <button id="archiveBtn">📥 Archiver JSON</button>
         <button id="generateJSONBtn">🚀 Générer JSON & Push LLM</button>
       </div>
       <textarea id="jsonPaste" placeholder="Coller ici le JSON généré par le LLM…"></textarea>
       <button id="pushJSONBtn">📤 Push JSON vers Modules</button>
     </section>
 
-    <!-- Section Modules -->
+    <!-- Section Modules (basculée en dessous) -->
     <section id="modulesSection">
       <h2>Modules / Actions</h2>
 
